@@ -41,20 +41,51 @@ método que escolhe um elemento aleatório de uma lista não vazia.
 
 import random
 import sys
+from pprint import pprint
+from itertools import zip_longest, islice
 
+def read_words(f):
+    words = []
+    words.append('')
+    with open(f, "r") as f:
+        for line in f:
+            for l in line.split():
+                words.append(l.lower())
+    words.append('')
+    return words
+
+def get_neighbors(word, words):
+  result = set()
+  # word = w neighbor = n
+  for w, n in zip_longest(words, islice(words, 1, None)):
+    if w == word and n is not None:
+        result.add(n)
+  return list(result)
 
 def mimic_dict(filename):
   """Retorna o dicionario imitador mapeando cada palavra para a lista de
   palavras subsequentes."""
     # +++ SUA SOLUÇÃO +++
-  return
+  words = read_words(filename)
+  # pprint(words)
+  d = {}
+  for w in words:
+    d[w] = get_neighbors(w, words)
+  # pprint(d)
+  return d
 
 
 def print_mimic(mimic_dict, word):
-  """Dado o dicionario imitador e a palavra inicial, imprime texto de 200 palavras."""
+  """Dado o dicionario imitador e a palavra inicial, 
+  imprime texto de 200 palavras."""
     # +++ SUA SOLUÇÃO +++
-  return
-
+  text = ''
+  curr = word
+  for i in range(200):
+    choice = random.choice(mimic_dict[curr])
+    text += choice + ' '
+    curr = choice
+  pprint(text)
 
 # Chama mimic_dict() e print_mimic()
 def main():
