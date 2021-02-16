@@ -7,12 +7,16 @@ adjacentes iguais são reduzidos a um único elemento.
 Exemplo: [1, 2, 2, 3]
 Irá retornar: [1, 2, 3]
 """
-
+from itertools import zip_longest, islice
 def remove_adjacent(nums):
     # +++ SUA SOLUÇÃO +++
-    return
-
-
+    # islice(iter, start, stop)
+    # zip_longest(list1, list2, ...listn, fillvalue=?)
+    r = []
+    for f,s in zip_longest(nums, islice(nums, 1, None)):
+        if f != s:
+            r.append(f)
+    return r
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 
 def test(f, in_, expected):
