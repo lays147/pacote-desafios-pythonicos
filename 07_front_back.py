@@ -10,10 +10,24 @@ Exemplo: 'abcde', a metade da frente é 'abc' e a de trás é 'de'.
 Finalmente, dadas duas strings a e b, retorne uma string na forma:
 a-frente + b-frente + a-trás + b-trás
 """
+import math
 def front_back(a, b):
     # +++ SUA SOLUÇÃO +++
-    return
-
+    len_a = len(a)
+    len_b = len(b)
+    # Qual é a mais elegante? 
+    # Concatenação na mão ou uso do zip?
+    
+    # split_a = (a[:math.ceil(len_a/2)], a[math.ceil(len_a/2):])
+    # split_b = (b[:math.ceil(len_b/2)], b[math.ceil(len_b/2):])
+    # return split_a[0]+split_b[0]+split_a[1]+split_b[1]
+    
+    # split_a = [a[:math.ceil(len_a/2)], a[math.ceil(len_a/2):]]
+    # split_b = [b[:math.ceil(len_b/2)], b[math.ceil(len_b/2):]]
+    # result = ''
+    # for a,b in zip(split_a, split_b):
+    #     result+= a + b
+    # return result
 
 # --- Daqui para baixo são apenas códigos auxiliáries de teste. ---
 
