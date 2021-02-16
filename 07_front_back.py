@@ -18,9 +18,9 @@ def front_back(a, b):
     # Qual é a mais elegante? 
     # Concatenação na mão ou uso do zip?
     
-    # split_a = (a[:math.ceil(len_a/2)], a[math.ceil(len_a/2):])
-    # split_b = (b[:math.ceil(len_b/2)], b[math.ceil(len_b/2):])
-    # return split_a[0]+split_b[0]+split_a[1]+split_b[1]
+    split_a = (a[:math.ceil(len_a/2)], a[math.ceil(len_a/2):])
+    split_b = (b[:math.ceil(len_b/2)], b[math.ceil(len_b/2):])
+    return ''.join([split_a[0], split_b[0], split_a[1], split_b[1]])
     
     # split_a = [a[:math.ceil(len_a/2)], a[math.ceil(len_a/2):]]
     # split_b = [b[:math.ceil(len_b/2)], b[math.ceil(len_b/2):]]
