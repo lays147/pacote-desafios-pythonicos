@@ -57,6 +57,32 @@ import sys
 # +++ SUA SOLUÇÃO +++
 # Defina as funções print_words(filename) e print_top(filename).
 
+from collections import Counter
+
+def read_letters(f):
+    letters = []
+    with open(f, "r") as f:
+        for line in f:
+            for l in line.split():
+                letters.append(l.lower())
+    return letters
+
+def count(letters, top=None):
+    return list(Counter(letters).most_common(top))
+
+def print_result(words_tuple):
+    for idx, t in enumerate(words_tuple):
+        print(f'index: {idx} key: {t[0]} count: {t[1]}')
+
+def print_words(filename):
+    letters = read_letters(f=filename)
+    list_of_tuples = count(letters)
+    print_result(sorted(list_of_tuples, key=lambda t: t[0]))
+
+def print_top(filename):
+    letters = readLetters(f=filename)
+    list_of_tuples = count(letters=letters, top=20)
+    print_result(sorted(list_of_tuples, key=lambda t: t[1], reverse=True))
 
 # A função abaixo chama print_words() ou print_top() de acordo com os
 # parêtros do programa.
